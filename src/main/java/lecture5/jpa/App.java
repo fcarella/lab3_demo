@@ -5,8 +5,7 @@
  */
 package lecture5.jpa;
 
-  import lecture5.jpa.controllers.BookJpaController;
-  import lecture5.jpa.controllers.MagazineJpaController;
+  import lecture5.jpa.controllers.*;
   import lecture5.jpa.entities.*;
 
   import javax.persistence.EntityManagerFactory;
@@ -188,6 +187,14 @@ public class App {
     }
     public void editItem(Editable s) {
         s.edit();
+        PublicationJpaController publicationController=new PublicationJpaController(emf);
+        try {
+            publicationController.edit((Publication) s);
+        }catch(Exception e){
+            System.out.println("Problem with Publication...");
+        }
+
+
     }
 
     public SaleableItem getItem(SaleableItem s){
